@@ -2,16 +2,16 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import requests
 import json
 
-# Last.fm API key and username
+# Your API key and Username
 API_KEY = "YOURAPIKEY"
 USERNAME = "YOURUSERNAME"
 
-# Handler for the HTTP requests
+
 class LastFMServerHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
-        self.send_header('Access-Control-Allow-Origin', '*')  # Allow requests from any origin
+        self.send_header('Access-Control-Allow-Origin', '*')  
         self.end_headers()
 
         if self.path == '/currently_playing':
@@ -30,7 +30,7 @@ class LastFMServerHandler(BaseHTTPRequestHandler):
             self.wfile.write(b'404 Not Found')
 
 def run_server():
-    server_address = ('YOURIPADDRESS', 8000)  # Replace with your server's IP address and port
+    server_address = ('YOURIPADDRESS', 8000)  # Replace with your IP address and Port
     httpd = HTTPServer(server_address, LastFMServerHandler)
     print(f'Server running on {server_address[0]}:{server_address[1]}')
     httpd.serve_forever()
