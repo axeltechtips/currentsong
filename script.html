@@ -1,0 +1,25 @@
+<script>
+    async function getCurrentlyPlaying() {
+        try {
+            const response = await fetch('http://YOUR_SERVER_IP:8000/currently_playing');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching currently playing song:', error);
+            return null;
+        }
+    }
+
+    async function updateCurrentlyPlaying() {
+        const currentlyListeningElement = document.querySelector('.currently-listening .song');
+        const data = await getCurrentlyPlaying();
+        if (data && !data.error) {
+            currentlyListeningElement.textContent = `${data.artist} - ${data.track}`;
+        } else {
+            currentlyListeningElement.textContent = 'N/A';
+        }
+    }
+
+    updateCurrentlyPlaying();
+    setInterval(updateCurrentlyPlaying, 10000);
+</script>
