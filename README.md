@@ -3,7 +3,6 @@
 What is Current Song?
 
 Current Song is an open-source piece of code/software designed to seamlessly integrate your Last.Fm scrobbling status with your website. With easy setup instructions, you'll be up and running in no time!
-Instructions
 ---
 ## Instructions
 
